@@ -1,4 +1,4 @@
-/. Iyu3 库工具包 By 欧阳鹏 ./
+// Iyu3 库工具包 By 欧阳鹏
 
 // 获取前端 URL 地址
 fn get_url()

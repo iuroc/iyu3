@@ -12,7 +12,10 @@
 2. 导入 `iyu3`
 
     ```ts
+    // TypeScript
     import { iyu3 } from 'iyu3'
+    // JavaScript
+    const iyu3 = require('iyu3')
     ````
 3. 使用 `runSync` 方法执行裕语言模块方法，并设置返回值
 
