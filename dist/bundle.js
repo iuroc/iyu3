@@ -2,21 +2,49 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var iyu3_1 = require("./iyu3");
-iyu3_1.iyu3.callback.get_res = function (data) {
-    alert(data);
-};
-// iyu3.run('api.get_res', ['https://apee.top'], 'get_res')
-// let result = iyu3.runSync('api.get_file_list', [true], 'sss.file_list')
-// alert(result)
-for (var i = 0; i < 100; i++) {
-    iyu3_1.iyu3.log('你好呀 ' + i);
+/**
+ * 获取文件列表
+ * @param path 文件夹路径，以 `%` 开头
+ */
+function getFileList(path) {
+    var listStr = iyu3_1.iyu3.runSync('api.get_file_list', [path], 'sss.file_list');
+    return listStr ? listStr.split('\n') : [];
 }
+function listClick(event) {
+    var fileName = event.target.innerText;
+    nowPath += fileName + '/';
+    loadFileList();
+}
+/** 加载文件列表 */
+function loadFileList(path) {
+    if (path === void 0) { path = nowPath; }
+    var fileList = getFileList(path);
+    listEle.innerHTML = '';
+    fileList.forEach(function (fileName) {
+        var listItem = document.createElement('div');
+        listItem.classList.add('list-group-item', 'list-group-item-action');
+        listItem.innerText = fileName;
+        listItem.addEventListener('click', listClick);
+        listEle.append(listItem);
+    });
+}
+var listEle = document.querySelector('.file-list');
+var aboutEle = document.querySelector('.about');
+aboutEle.addEventListener('click', function () {
+    iyu3_1.iyu3.run('api.about');
+});
+var nowPath = '%';
+loadFileList();
 
 },{"./iyu3":2}],2:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.iapp = exports.iyu3 = exports.Iyu3 = void 0;
-/** 用于 JS 交互裕语言 3.0 的工具库 */
+/**
+ * 用于 JS 交互裕语言 3.0 的工具库
+ * @author 欧阳鹏
+ * @link https://github/oyps/iyu3
+ */
 var Iyu3 = /** @class */ (function () {
     function Iyu3() {
         /** 回调函数 */
@@ -26,9 +54,10 @@ var Iyu3 = /** @class */ (function () {
             }
         };
         console.log('Iyu3 - By 鹏优创');
-        if (typeof window.iapp == 'undefined') {
+        if (typeof window == 'undefined')
+            throw new Error('请在浏览器中运行');
+        if (typeof window.iapp == 'undefined')
             throw new Error('没有找到 iapp 对象，请确保处于裕语言环境，并开启语言交互功能');
-        }
         window.iyu3 = this;
     }
     Iyu3.prototype.run = function (iyuFunName, b, c) {
@@ -68,7 +97,6 @@ var Iyu3 = /** @class */ (function () {
         });
         if (callbackName)
             list.push("\"iyu3.callback['".concat(callbackName, "']\""));
-        document.write(list.join());
         return list.join();
     };
     /** 向裕语言控制台打印内容 */
@@ -78,7 +106,9 @@ var Iyu3 = /** @class */ (function () {
     return Iyu3;
 }());
 exports.Iyu3 = Iyu3;
+/** 用于 JS 交互裕语言 3.0 的工具库 */
 exports.iyu3 = new Iyu3();
+/** iApp 根对象 */
 exports.iapp = window.iapp;
 
 },{}]},{},[1]);

@@ -1,12 +1,36 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var iyu3_1 = require("./iyu3");
-iyu3_1.iyu3.callback.get_res = function (data) {
-    alert(data);
-};
-// iyu3.run('api.get_res', ['https://apee.top'], 'get_res')
-// let result = iyu3.runSync('api.get_file_list', [true], 'sss.file_list')
-// alert(result)
-for (var i = 0; i < 100; i++) {
-    iyu3_1.iyu3.log('你好呀 ' + i);
+/**
+ * 获取文件列表
+ * @param path 文件夹路径，以 `%` 开头
+ */
+function getFileList(path) {
+    var listStr = iyu3_1.iyu3.runSync('api.get_file_list', [path], 'sss.file_list');
+    return listStr ? listStr.split('\n') : [];
 }
+function listClick(event) {
+    var fileName = event.target.innerText;
+    nowPath += fileName + '/';
+    loadFileList();
+}
+/** 加载文件列表 */
+function loadFileList(path) {
+    if (path === void 0) { path = nowPath; }
+    var fileList = getFileList(path);
+    listEle.innerHTML = '';
+    fileList.forEach(function (fileName) {
+        var listItem = document.createElement('div');
+        listItem.classList.add('list-group-item', 'list-group-item-action');
+        listItem.innerText = fileName;
+        listItem.addEventListener('click', listClick);
+        listEle.append(listItem);
+    });
+}
+var listEle = document.querySelector('.file-list');
+var aboutEle = document.querySelector('.about');
+aboutEle.addEventListener('click', function () {
+    iyu3_1.iyu3.run('api.about');
+});
+var nowPath = '%';
+loadFileList();
