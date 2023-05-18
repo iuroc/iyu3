@@ -1,6 +1,6 @@
 # Iyu3
 
-> JavaScript 交互裕语言工具库
+> 用于 JavaScript 交互裕语言的工具库
 
 ## 使用方法
 
