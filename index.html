@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>iApp</title>
+</head>
+
+<body class="user-select-none">
+    <div class="px-4 py-3 bg-light shadow-sm d-flex">
+        <div class="fw-bold fs-5">文件管理器</div>
+        <div class="ms-auto fs-5">关于</div>
+    </div>
+    <div class="list-group file-list m-3">
+        <div class="list-group-item list-group-item-action">哈哈</div>
+    </div>
+    <script>
+        const linkEle = document.createElement('link')
+        linkEle.rel = 'stylesheet'
+        linkEle.href = 'css/index.css?' + new Date().getTime()
+        const scriptEle = document.createElement('script')
+        scriptEle.src = 'dist/bundle.js?' + new Date().getTime()
+        document.head.append(linkEle)
+        document.body.append(scriptEle)
+    </script>
+</body>
+
+</html>

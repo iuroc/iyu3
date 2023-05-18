@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "outDir": "js"
+    },
+    "include": [
+        "src"
+    ]
+}

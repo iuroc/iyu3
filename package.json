@@ -1,0 +1,17 @@
+{
+  "description": "JS 交互裕语言工具库",
+  "devDependencies": {
+    "@types/node": "^20.2.1",
+    "browserify": "^17.0.0",
+    "typescript": "^5.0.4"
+  },
+  "scripts": {
+    "build": "browserify js/index.js -o dist/bundle.js",
+    "build:tsc": "tsc -w"
+  },
+  "name": "iyu3",
+  "version": "1.0.1",
+  "main": "index.js",
+  "author": "欧阳鹏",
+  "license": "ISC"
+}
