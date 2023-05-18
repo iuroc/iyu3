@@ -1,0 +1,14 @@
+fn get_res(url, callback)
+t()
+{
+  hs(url, ym)
+  ufnsui()
+  {
+    fn util.run_back(callback, ym)
+  }
+}
+end fn
+
+fn get_file_list(path)
+sss file_list = path
+end fn

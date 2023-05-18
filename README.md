@@ -14,9 +14,79 @@
     ```ts
     import { iyu3 } from 'iyu3'
     ````
-3. 使用 runSync 执行裕语言模块方法，并设置返回值
+3. 使用 `runSync` 方法执行裕语言模块方法，并设置返回值
 
     ```ts
     let data = iyu3.runSync('api.get_list', ['参数', '参数'], 'sss.data')
-    iyu3.run('util.log', [data])
+    iyu3.log(data) // 打印到 iApp 控制台
     ```
+
+    也可以不传入参数：
+
+    ```ts
+    let data = iyu3.runSync('api.xxx', 'sss.data')
+    iyu3.log(data)
+    ```
+
+    裕语言实现：
+
+    ```java
+    fn get_list(a, b)
+    s(a + b, c)
+    sss data = c
+    end fn
+    ```
+
+    ```java
+    fn xxx(a)
+    sss data = a
+    end fn
+    ```
+4. 使用 `run`  方法执行裕语言模块方法，并设置异步的回调函数
+
+    ```ts
+    // 挂载一个回调事件
+    iyu3.callback.get_res = (data) => {
+        alert(data)
+    }
+    // 执行裕语言方法
+    iyu3.run('api.get_res', ['https://apee.top'], 'get_res')
+    // 不设置回调
+    iyu3.run('api.xxxx', ['https://apee.top'])
+    // 不设置参数
+    iyu3.run('api.xxxx', 'get_res')
+    // 不设置参数和回调
+    iyu3.run('api.xxxx')
+    ```
+
+    裕语言实现：
+
+    ```java
+    fn get_res(url, callback)
+    t()
+    {
+        hs(url, ym)
+        ufnsui()
+        {
+            fn util.run_back(callback, ym)
+        }
+    }
+    end fn
+    ```
+5. 设置回调事件
+
+    ```ts
+    iyu3.callback.xxxx = (data) => {
+        iyu3.log(data)
+    }
+    ```
+
+## 使用示例
+
+```ts
+import { iyu3 } from 'iyu3'
+
+for (let i = 0; i < 100; i++) {
+    iyu3.log('你好呀 ' + i)
+}
+```
