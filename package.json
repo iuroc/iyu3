@@ -12,8 +12,9 @@
     "build:tsc": "tsc -w"
   },
   "name": "iyu3",
-  "version": "1.0.3",
-  "main": "index.js",
+  "version": "1.0.4",
+  "main": "js/index.js",
+  "types": "src/iyu3.ts",
   "author": "欧阳鹏",
   "license": "ISC"
 }
