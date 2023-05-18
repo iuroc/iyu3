@@ -21,7 +21,11 @@ declare global {
     }
 }
 
-/** 用于 JS 交互裕语言 3.0 的工具库 */
+/**
+ * 用于 JS 交互裕语言 3.0 的工具库
+ * @author 欧阳鹏
+ * @link https://github/oyps/iyu3
+ */
 export class Iyu3 {
     public constructor() {
         console.log('Iyu3 - By 鹏优创')
@@ -114,5 +118,7 @@ export class Iyu3 {
     }
 }
 
+/** 用于 JS 交互裕语言 3.0 的工具库 */
 export const iyu3 = new Iyu3()
+/** iApp 根对象 */
 export const iapp = window.iapp

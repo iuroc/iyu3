@@ -1,7 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.iapp = exports.iyu3 = exports.Iyu3 = void 0;
-/** 用于 JS 交互裕语言 3.0 的工具库 */
+/**
+ * 用于 JS 交互裕语言 3.0 的工具库
+ * @author 欧阳鹏
+ * @link https://github/oyps/iyu3
+ */
 var Iyu3 = /** @class */ (function () {
     function Iyu3() {
         /** 回调函数 */
@@ -62,5 +66,7 @@ var Iyu3 = /** @class */ (function () {
     return Iyu3;
 }());
 exports.Iyu3 = Iyu3;
+/** 用于 JS 交互裕语言 3.0 的工具库 */
 exports.iyu3 = new Iyu3();
+/** iApp 根对象 */
 exports.iapp = window.iapp;
