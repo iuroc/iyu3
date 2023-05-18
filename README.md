@@ -97,3 +97,10 @@ for (let i = 0; i < 100; i++) {
 1. 启动 HTTP 服务器：`npm server`
 2. 启动 TypeScript 自动编译：`npm run build:tsc`
 3. 每次修改 TS 代码，执行：`npm run build`
+
+## 项目介绍
+
+- 开发日期：2023 年 5 月 19 日
+- 作者：欧阳鹏
+- 公众号：代码十级（欢迎关注，大量精彩内容）
+- 主页：https://apee.top
