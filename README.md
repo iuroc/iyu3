@@ -90,3 +90,10 @@ for (let i = 0; i < 100; i++) {
     iyu3.log('你好呀 ' + i)
 }
 ```
+
+## 环境搭建
+
+1. 安装所有依赖：`npm install`
+1. 启动 HTTP 服务器：`npm server`
+2. 启动 TypeScript 自动编译：`npm run build:tsc`
+3. 每次修改 TS 代码，执行：`npm run build`

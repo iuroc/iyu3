@@ -3,9 +3,11 @@
   "devDependencies": {
     "@types/node": "^20.2.1",
     "browserify": "^17.0.0",
+    "http-server": "^14.1.1",
     "typescript": "^5.0.4"
   },
   "scripts": {
+    "server": "http-server",
     "build": "browserify js/index.js -o dist/bundle.js",
     "build:tsc": "tsc -w"
   },
