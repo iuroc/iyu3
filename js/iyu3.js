@@ -15,9 +15,10 @@ var Iyu3 = /** @class */ (function () {
             }
         };
         console.log('Iyu3 - By 鹏优创');
-        if (typeof window.iapp == 'undefined') {
+        if (typeof window == 'undefined')
+            throw new Error('请在浏览器中运行');
+        if (typeof window.iapp == 'undefined')
             throw new Error('没有找到 iapp 对象，请确保处于裕语言环境，并开启语言交互功能');
-        }
         window.iyu3 = this;
     }
     Iyu3.prototype.run = function (iyuFunName, b, c) {
