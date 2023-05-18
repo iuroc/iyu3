@@ -1,18 +1,3 @@
-(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var iyu3_1 = require("./iyu3");
-iyu3_1.iyu3.callback.get_res = function (data) {
-    alert(data);
-};
-// iyu3.run('api.get_res', ['https://apee.top'], 'get_res')
-// let result = iyu3.runSync('api.get_file_list', [true], 'sss.file_list')
-// alert(result)
-for (var i = 0; i < 100; i++) {
-    iyu3_1.iyu3.log('你好呀 ' + i);
-}
-
-},{"./iyu3":2}],2:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.iapp = exports.iyu3 = exports.Iyu3 = void 0;
@@ -68,7 +53,6 @@ var Iyu3 = /** @class */ (function () {
         });
         if (callbackName)
             list.push("\"iyu3.callback['".concat(callbackName, "']\""));
-        document.write(list.join());
         return list.join();
     };
     /** 向裕语言控制台打印内容 */
@@ -80,5 +64,3 @@ var Iyu3 = /** @class */ (function () {
 exports.Iyu3 = Iyu3;
 exports.iyu3 = new Iyu3();
 exports.iapp = window.iapp;
-
-},{}]},{},[1]);
