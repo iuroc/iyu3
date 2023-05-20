@@ -5,18 +5,18 @@ import { iyu3 } from './iyu3'
  * @param path 文件夹路径，以 `%` 开头
  */
 function getFileList(path: string): string[] {
-    let listStr = iyu3.runSync('api.get_file_list', [path], 'sss.file_list')
+    let listStr = iyu3.runSync('api.getFileList', [path], 'sss.fileList')
     return listStr ? listStr.split('\n') : []
 }
 
 function listClick(event: MouseEvent) {
     let type = (event.target as HTMLDivElement).getAttribute('data-type') as string
+    let fileName = (event.target as HTMLDivElement).innerText
     if (type == 'dir') {
-        let fileName = (event.target as HTMLDivElement).innerText
         nowPath += fileName + '/'
         loadFileList()
     } else {
-        alert('这是一个文件')
+        iyu3.run('api.openFile', [nowPath + fileName])
     }
 }
 
@@ -24,13 +24,13 @@ function listClick(event: MouseEvent) {
 function loadFileList(path: string = nowPath) {
     const fileList = getFileList(path)
     listEle.innerHTML = ``
-    let classList = ['list-group-item', 'list-group-item-action']
-    if (nowPath != '%') {
+    let classList = ['list-group-item', 'list-group-item-action', 'text-break']
+    if (nowPath != basePath) {
         const backBtn = document.createElement('div')
         backBtn.classList.add(...classList)
         backBtn.innerText = '返回上一级'
         backBtn.addEventListener('click', () => {
-            nowPath = nowPath.replace(/[^/%]+\/$/, '')
+            nowPath = nowPath.replace(/[^/]+\/$/, '')
             loadFileList()
         })
         listEle.append(backBtn)
@@ -53,5 +53,6 @@ const aboutEle = document.querySelector('.about') as HTMLDivElement
 aboutEle.addEventListener('click', () => {
     iyu3.run('api.about')
 })
-let nowPath = '%'
+let basePath = '/sdcard/'
+let nowPath = basePath
 loadFileList()

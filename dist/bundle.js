@@ -7,18 +7,18 @@ var iyu3_1 = require("./iyu3");
  * @param path 文件夹路径，以 `%` 开头
  */
 function getFileList(path) {
-    var listStr = iyu3_1.iyu3.runSync('api.get_file_list', [path], 'sss.file_list');
+    var listStr = iyu3_1.iyu3.runSync('api.getFileList', [path], 'sss.fileList');
     return listStr ? listStr.split('\n') : [];
 }
 function listClick(event) {
     var type = event.target.getAttribute('data-type');
+    var fileName = event.target.innerText;
     if (type == 'dir') {
-        var fileName = event.target.innerText;
         nowPath += fileName + '/';
         loadFileList();
     }
     else {
-        alert('这是一个文件');
+        iyu3_1.iyu3.run('api.openFile', [nowPath + fileName]);
     }
 }
 /** 加载文件列表 */
@@ -28,12 +28,12 @@ function loadFileList(path) {
     var fileList = getFileList(path);
     listEle.innerHTML = "";
     var classList = ['list-group-item', 'list-group-item-action'];
-    if (nowPath != '%') {
+    if (nowPath != basePath) {
         var backBtn = document.createElement('div');
         (_a = backBtn.classList).add.apply(_a, classList);
         backBtn.innerText = '返回上一级';
         backBtn.addEventListener('click', function () {
-            nowPath = nowPath.replace(/[^/%]+\/$/, '');
+            nowPath = nowPath.replace(/[^/]+\/$/, '');
             loadFileList();
         });
         listEle.append(backBtn);
@@ -56,7 +56,8 @@ var aboutEle = document.querySelector('.about');
 aboutEle.addEventListener('click', function () {
     iyu3_1.iyu3.run('api.about');
 });
-var nowPath = '%';
+var basePath = '/sdcard/';
+var nowPath = basePath;
 loadFileList();
 
 },{"./iyu3":2}],2:[function(require,module,exports){

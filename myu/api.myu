@@ -38,3 +38,7 @@ utw(null, "关于软件", "本软件由欧阳鹏开发设计，使用全新 JS �
 {
 }
 end fn
+
+fn open_file(path)
+fo(path)
+end fn
