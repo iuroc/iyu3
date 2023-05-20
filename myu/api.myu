@@ -10,11 +10,16 @@ t()
 end fn
 
 fn get_file_list(path)
-fl(path, list)
+fl(path, true, list)
 s text = ''
 for(item; list)
 {
-  ss(text + item + "\n", text)
+  ss(text + item + "|dir\n", text)
+}
+fl(path, false, list)
+for(item; list)
+{
+  ss(text + item + "|file\n", text)
 }
 f(text == null)
 {
