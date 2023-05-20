@@ -27,7 +27,7 @@ function loadFileList(path) {
     if (path === void 0) { path = nowPath; }
     var fileList = getFileList(path);
     listEle.innerHTML = "";
-    var classList = ['list-group-item', 'list-group-item-action'];
+    var classList = ['list-group-item', 'list-group-item-action', 'text-break'];
     if (nowPath != basePath) {
         var backBtn = document.createElement('div');
         (_a = backBtn.classList).add.apply(_a, classList);
