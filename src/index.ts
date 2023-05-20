@@ -27,6 +27,7 @@ function loadFileList(path: string = nowPath) {
     let classList = ['list-group-item', 'list-group-item-action', 'text-break']
     if (nowPath != basePath) {
         const backBtn = document.createElement('div')
+        backBtn.classList.add('text-bg-success')
         backBtn.classList.add(...classList)
         backBtn.innerText = '返回上一级'
         backBtn.addEventListener('click', () => {
@@ -41,6 +42,7 @@ function loadFileList(path: string = nowPath) {
         const listItem = document.createElement('div')
         listItem.classList.add(...classList)
         listItem.innerText = fileName
+        if (info[1] == 'dir') listItem.classList.add('bg-light')
         listItem.setAttribute('data-type', info[1])
         listItem.addEventListener('click', listClick)
         listEle.append(listItem)

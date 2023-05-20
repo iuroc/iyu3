@@ -1,14 +1,14 @@
 // Iyu3 库工具包 By 欧阳鹏
 
 // 获取前端 URL 地址
-fn get_url()
+fn getUrl()
 s url = "http://192.168.31.81:8080/"
 time(4, timestamp)
 ss(url + "?" + timestamp, ss.url)
 end fn
 
 // 执行 JS 回调函数
-fn run_back(callback, text)
+fn runBack(callback, text)
 sr(text, "`", "\`", text)
 ss(callback + "(`" + text + "`)", code)
 has(1, code)

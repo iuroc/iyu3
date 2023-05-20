@@ -1,35 +1,52 @@
-fn get_res(url, callback)
+fn getRes(url, callback)
 t()
 {
   hs(url, ym)
   ufnsui()
   {
-    fn util.run_back(callback, ym)
+    fn util.runBack(callback, ym)
   }
 }
 end fn
 
-fn get_file_list(path)
-fl(path, true, list)
+fn getFileList(path)
+cls("java.io.File", File)
+javanew(file, File, "String", path)
+javax(canRead, file, File, "canRead")
+f(!canRead)
+{
+  sss fileList = ''
+  endcode
+}
+javax(isDir, file, File, "isDirectory")
+
+f(isDir == false)
+{
+  sss fileList = ''
+  endcode
+}
+javax(list, file, File, "listFiles")
 s text = ''
+sgszl(list, allCount)
+f(allCount == 0)
+{
+  sss fileList = ''
+  endcode
+}
 for(item; list)
 {
-  ss(text + item + "|dir\n", text)
+  javax(name, item, File, "getName")
+  javax(isDir, item, File, "isDirectory")
+  f(isDir)
+  {
+    ss(text + name + "|dir\n", text)
+  }
+  else
+  {
+    ss(text + name + "|file\n", text)
+  }
 }
-fl(path, false, list)
-for(item; list)
-{
-  ss(text + item + "|file\n", text)
-}
-f(text == null)
-{
-  sss file_list = ''
-}
-else
-{
-  strim(text, text)
-  sss file_list = text
-}
+strim(text, sss.fileList)
 end fn
 
 
@@ -39,6 +56,6 @@ utw(null, "关于软件", "本软件由欧阳鹏开发设计，使用全新 JS �
 }
 end fn
 
-fn open_file(path)
+fn openFile(path)
 fo(path)
 end fn

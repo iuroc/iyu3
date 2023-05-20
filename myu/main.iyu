@@ -8,7 +8,7 @@ java(null, ws, "android.webkit.WebSettings.setDisplayZoomControls", "boolean", f
 // 开启浏览器交互 JavaScript
 hsas(1, true)
 // 获取 URL 配置
-fn util.get_url()
+fn util.getUrl()
 // 设置浏览器 URL
 us(1, "url", ss.url)
 
@@ -16,7 +16,7 @@ us(1, "url", ss.url)
 
 f(st_kC == 82)
 {
-  fn util.get_url()
+  fn util.getUrl()
   us(1, "url", ss.url)
 }
 else f(st_kC == 4)
