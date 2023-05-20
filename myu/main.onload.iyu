@@ -1,8 +1,5 @@
-【载入事件】
-
 gvs(1, wv)
 java(ws, wv, "android.webkit.WebView.getSettings")
-
 java(null, ws, "android.webkit.WebSettings.setBuiltInZoomControls", "boolean", false)
 java(null, ws, "android.webkit.WebSettings.setDisplayZoomControls", "boolean", false)
 // 开启浏览器交互 JavaScript
@@ -11,15 +8,3 @@ hsas(1, true)
 fn util.getUrl()
 // 设置浏览器 URL
 us(1, "url", ss.url)
-
-【按键按下事件】
-
-f(st_kC == 82)
-{
-  fn util.getUrl()
-  us(1, "url", ss.url)
-}
-else f(st_kC == 4)
-{
-  end()
-}
