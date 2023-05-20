@@ -10,5 +10,26 @@ t()
 end fn
 
 fn get_file_list(path)
-sss file_list = path
+fl(path, list)
+s text = ''
+for(item; list)
+{
+  ss(text + item + "\n", text)
+}
+f(text == null)
+{
+  sss file_list = ''
+}
+else
+{
+  strim(text, text)
+  sss file_list = text
+}
+end fn
+
+
+fn about()
+utw(null, "关于软件", "本软件由欧阳鹏开发设计，使用全新 JS 和裕语言交互技术，搭载 Iyu3 库，给你带来别样体验。\n\n这个软件的界面使用的是 Bootstrap 哦，是不是很神奇。\n\nIyu3 开源地址：https://github.com/oyps/iyu3", "确定", false, v)
+{
+}
 end fn

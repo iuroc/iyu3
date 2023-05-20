@@ -10,22 +10,42 @@ function getFileList(path: string): string[] {
 }
 
 function listClick(event: MouseEvent) {
-    let fileName = (event.target as HTMLDivElement).innerText
-    nowPath += fileName + '/'
-    loadFileList()
+    let type = (event.target as HTMLDivElement).getAttribute('data-type') as string
+    if (type == 'dir') {
+        let fileName = (event.target as HTMLDivElement).innerText
+        nowPath += fileName + '/'
+        loadFileList()
+    } else {
+        alert('这是一个文件')
+    }
 }
 
 /** 加载文件列表 */
 function loadFileList(path: string = nowPath) {
     const fileList = getFileList(path)
-    listEle.innerHTML = ''
-    fileList.forEach(fileName => {
+    listEle.innerHTML = ``
+    let classList = ['list-group-item', 'list-group-item-action']
+    if (nowPath != '%') {
+        const backBtn = document.createElement('div')
+        backBtn.classList.add(...classList)
+        backBtn.innerText = '返回上一级'
+        backBtn.addEventListener('click', () => {
+            nowPath = nowPath.replace(/[^/%]+\/$/, '')
+            loadFileList()
+        })
+        listEle.append(backBtn)
+    }
+    fileList.forEach(fileInfo => {
+        const info = fileInfo.split('|')
+        let fileName = info[0]
         const listItem = document.createElement('div')
-        listItem.classList.add('list-group-item', 'list-group-item-action')
+        listItem.classList.add(...classList)
         listItem.innerText = fileName
+        listItem.setAttribute('data-type', info[1])
         listItem.addEventListener('click', listClick)
         listEle.append(listItem)
     })
+    window.scrollTo(0, 0)
 }
 
 const listEle = document.querySelector('.file-list') as HTMLDivElement
